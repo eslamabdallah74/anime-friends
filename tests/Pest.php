@@ -11,6 +11,8 @@
 |
 */
 
+use App\Models\User;
+
 uses(Tests\TestCase::class)->in('Feature');
 
 /*
@@ -24,8 +26,10 @@ uses(Tests\TestCase::class)->in('Feature');
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
+    // Redirct users Test
+expect()->extend('toBeRedirctedFor', function (string $url, string $method = 'get') {
+    return ActingAs($this->value)
+    ->{$method}($url)->assertStatus(302);
 });
 
 /*
@@ -39,7 +43,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function ActingAs($user)
 {
-    // ..
+    return test()->actingAs($user);
 }
