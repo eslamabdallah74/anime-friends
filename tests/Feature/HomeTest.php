@@ -3,9 +3,10 @@
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
+uses(RefreshDatabase::class);
+
 use function Pest\Laravel\get;
 
-uses(RefreshDatabase::class);
 
 
 it('greets the guests', function () {

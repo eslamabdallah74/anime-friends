@@ -52,7 +52,7 @@
             {{-- Another list --}}
             <ul>
                 <li>
-                    <a href="{{ route('Login') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Login</a>
+                    <a href="{{ route('login') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Login</a>
                 </li>
                 <li>
                     <a href="{{ route('Register') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Register</a>
