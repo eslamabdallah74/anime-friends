@@ -10,6 +10,7 @@
                     required
                     type="text"
                     class="block w-full p-3 mb-4 border rounded border-grey-light"
+                    placeholder="Jon Doe"
                     name="name"
                     placeholder="Full Name" />
 
@@ -17,6 +18,7 @@
                     required
                     type="text"
                     class="block w-full p-3 mb-4 border rounded border-grey-light"
+                    placeholder="Jon-Doe@gmail.com"
                     name="email"
                     placeholder="Email" />
 
@@ -24,6 +26,7 @@
                     required
                     type="password"
                     class="block w-full p-3 mb-4 border rounded border-grey-light"
+                    placeholder="********"
                     name="password"
                     placeholder="Password" />
                 {{-- <input

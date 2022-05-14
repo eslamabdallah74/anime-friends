@@ -1,5 +1,5 @@
 <x-layouts.app>
     <x-slot name='header'>
-        Anime 
+        My Anime
     </x-slot>
 </x-layouts.app>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pivot\AnimeUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,6 +46,7 @@ class User extends Authenticatable
     public function animes()
     {
         return $this->belongsToMany(Anime::class)
+        ->using(AnimeUser::class)
         ->withPivot('status')
         ->withTimestamps();
     }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Anime\AnimeStoreController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +23,6 @@ Route::get('/login',LoginController::class)->name('login');
 
 Route::middleware(['auth'])->group(function () {
     // Anime
-    Route::post('/anime',AnimeStoreController::class);
+    Route::resource('/anime',AnimeController::class);
 });
 

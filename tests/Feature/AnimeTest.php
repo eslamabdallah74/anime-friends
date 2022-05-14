@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Authenticate;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -9,9 +10,9 @@ beforeEach(function(){
     $this->user = User::factory()->create();
 });
 
-it('only auth users can go to anime page')->post('/anime')->assertStatus(302);
+it('redirct unAuthenticated users')->post('/anime')->assertStatus(302);
 
-it('anime validation')
+it('validate an anime')
     ->tap(fn() => $this->ActingAs($this->user))
     ->post('/anime')
     ->assertSessionHasErrors(['name','status']);
@@ -22,7 +23,7 @@ it('creates an anime', function() {
     ->post('/anime', [
         'name'      => 'an anime',
         'url'       => 'www.anime.com',
-        'status'    => 1,
+        'status'    => 'WATCHING',
     ]);
     $this->assertDatabaseHas('animes',[
         'name'      => 'an anime',
@@ -30,6 +31,13 @@ it('creates an anime', function() {
     ])
     ->assertDatabaseHas('anime_user',[
         'user_id'      => $this->user->id,
-        'status'       => 1,
+        'status'       => 'WATCHING',
     ]);
 });
+
+it('validate anime status')
+    ->tap(fn() => $this->ActingAs($this->user))
+    ->post('/anime',[
+        'status'    => 'EATING'
+    ])
+    ->assertSessionHasErrors(['status']);

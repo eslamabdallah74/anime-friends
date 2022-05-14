@@ -11,8 +11,7 @@
                     type="text"
                     class="block w-full p-3 mb-4 border rounded border-grey-light"
                     name="email"
-                    placeholder="Email" />
-
+                    placeholder="Jon-Doe@gmail.com"/>
                 <input
                     required
                     type="password"
