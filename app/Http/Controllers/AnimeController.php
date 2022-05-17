@@ -59,7 +59,7 @@ class AnimeController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -68,9 +68,16 @@ class AnimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Anime $anime,Request $request)
     {
-        //
+        if(!$anime = $request->user()->animes()->find($anime->id))
+        {
+            // Return user when hitting anime ID doesn't belong to him
+            return redirect('/');
+        }
+        return view('anime.edit',[
+            'anime' => $anime
+        ]);
     }
 
     /**
@@ -80,9 +87,19 @@ class AnimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Anime $anime,Request $request)
     {
-        //
+        // Valdation
+        $this->validate($request,[
+            'name'      => 'required|min:2|max:30',
+            'url'       => 'nullable|min:2|max:200',
+            'status'    => ['required', Rule::in(array_keys(AnimeUser::$status))],
+        ]);
+        $anime->update($request->only(['name','url']));
+        $request->user()->animes()->updateExistingPivot($anime, [
+            'status' => $request->status,
+        ]);
+        return redirect('/');
     }
 
     /**

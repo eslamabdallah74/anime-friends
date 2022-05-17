@@ -24,7 +24,7 @@
                 {{-- Another list --}}
                 <ul>
                     <li>
-                        <a href="{{ route('anime.index') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">My Anime</a>
+                        <a href="{{ route('Home') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">My Anime</a>
                     </li>
                     <li>
                         <a href="{{ route('anime.create') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Add Anime</a>
