@@ -28,8 +28,16 @@ uses(Tests\TestCase::class)->in('Feature');
 
     // Redirct users Test
 expect()->extend('toBeRedirctedFor', function (string $url, string $method = 'get') {
-    return ActingAs($this->value)
-    ->{$method}($url)->assertStatus(302);
+    // Creating Response value and set it to null
+    $response = null;
+    if(!$this->value)
+    {
+        $response = test()->{$method}($url);
+    } else {
+        $response = ActingAs($this->value)->{$method}($url);
+    }
+    // Return respone with status 302 to Redircted users
+    return $response->assertStatus(302);
 });
 
 /*
@@ -46,4 +54,9 @@ expect()->extend('toBeRedirctedFor', function (string $url, string $method = 'ge
 function ActingAs($user)
 {
     return test()->actingAs($user);
+}
+
+function expectGuest()
+{
+    return test()->expect(null);
 }

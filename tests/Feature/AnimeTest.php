@@ -10,7 +10,7 @@ beforeEach(function(){
     $this->user = User::factory()->create();
 });
 
-it('redirct unAuthenticated users')->post('/anime')->assertStatus(302);
+it('redirct unAuthenticated users')->expectGuest()->toBeRedirctedFor('/anime','post');
 
 it('validate an anime')
     ->tap(fn() => $this->ActingAs($this->user))

@@ -67,7 +67,9 @@
                     {{ $header }}
                 </div>
             @endisset
-            {{ $slot }}
+            <div class="mt-8">
+                {{ $slot }}
+            </div>
        </div>
     </div>
 </body>

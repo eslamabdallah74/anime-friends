@@ -40,8 +40,8 @@ class AnimeController extends Controller
     {
         // Valdation
         $this->validate($request,[
-            'name'      => 'required|min:2|max:20',
-            'url'       => 'nullable|min:2|max:40',
+            'name'      => 'required|min:2|max:30',
+            'url'       => 'nullable|min:2|max:200',
             'status'    => ['required', Rule::in(array_keys(AnimeUser::$status))],
         ]);
         $anime = Anime::create($request->only(['name','url']));

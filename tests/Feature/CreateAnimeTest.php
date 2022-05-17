@@ -8,9 +8,7 @@ uses(RefreshDatabase::class);
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
-it('only allows authenticated users')
-    ->get('/anime/create')
-    ->assertStatus(302);
+it('only allows authenticated users')->expectGuest()->toBeRedirctedFor('/anime/create');
 
 
 it('see status in order',function(){

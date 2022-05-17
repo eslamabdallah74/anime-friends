@@ -24,7 +24,7 @@
                     id="url"
                     class="block w-full p-3 my-4 border rounded border-grey-light"
                     name="url"
-                    placeholder="Type Anime website 'URL'" />
+                    placeholder="Type Anime website 'URL' It must start with http://" />
                 </div>
                 {{-- Anime status --}}
                 <div class="flex flex-row">
@@ -32,7 +32,7 @@
                     <select
                     id="status"
                     class="block w-full p-3 my-4 border rounded border-grey-light"
-                    name="url"
+                    name="status"
                     placeholder="Type Anime website 'URL'">
                         @foreach (App\Models\Pivot\AnimeUser::$status as $key => $state )
                             <option value="{{ $key }}">{{ $state }}</option>
