@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnimeStoreRequest;
 use App\Models\Anime;
 use App\Models\Pivot\AnimeUser;
 use Illuminate\Http\Request;
@@ -36,14 +37,8 @@ class AnimeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnimeStoreRequest $request)
     {
-        // Valdation
-        $this->validate($request,[
-            'name'      => 'required|min:2|max:30',
-            'url'       => 'nullable|min:2|max:200',
-            'status'    => ['required', Rule::in(array_keys(AnimeUser::$status))],
-        ]);
         $anime = Anime::create($request->only(['name','url']));
         $request->user()->animes()->attach($anime ,[
             'status' => $request->status,
@@ -87,14 +82,8 @@ class AnimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Anime $anime,Request $request)
+    public function update(Anime $anime,AnimeStoreRequest $request)
     {
-        // Valdation
-        $this->validate($request,[
-            'name'      => 'required|min:2|max:30',
-            'url'       => 'nullable|min:2|max:200',
-            'status'    => ['required', Rule::in(array_keys(AnimeUser::$status))],
-        ]);
         $anime->update($request->only(['name','url']));
         $request->user()->animes()->updateExistingPivot($anime, [
             'status' => $request->status,
