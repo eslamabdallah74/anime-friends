@@ -34,7 +34,7 @@ it('doesnt add same friend twice', function () {
 });
 
 it('accept friends request', function () {
-    $user = User::factory()->create();
+    $user   = User::factory()->create();
     $friend = User::factory()->create();
 
     $user->addFriend($friend);
@@ -43,4 +43,20 @@ it('accept friends request', function () {
     expect($user->acceptFriendsOfMain)->toHaveCount(1);
     expect($user->acceptFriendsOfMain->pluck('id'))->toContain($friend->id);
 
+});
+
+it('can get all friends', function () {
+    $user           = User::factory()->create();
+    $friend         = User::factory()->create();
+    $anotherFriend  = User::factory()->create();
+
+    $user->addFriend($friend);
+    $user->addFriend($anotherFriend);
+
+    $friend->acceptFriend($user);
+
+    expect($user->friends)->toHaveCount(1);
+    expect($friend->friends)->toHaveCount(1);
+    expect($anotherFriend->friends)->toHaveCount(0);
+    
 });
