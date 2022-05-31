@@ -30,7 +30,7 @@
                         <a href="{{ route('anime.create') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Add Anime</a>
                     </li>
                     <li>
-                        <a href="" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Friends</a>
+                        <a href="{{ route('friends.index') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Friends</a>
                     </li>
                 </ul>
                 {{-- Another list --}}

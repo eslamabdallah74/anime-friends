@@ -58,5 +58,18 @@ it('can get all friends', function () {
     expect($user->friends)->toHaveCount(1);
     expect($friend->friends)->toHaveCount(1);
     expect($anotherFriend->friends)->toHaveCount(0);
-    
+
+});
+
+it('can remove a friend', function () {
+    $user           = User::factory()->create();
+    $friend         = User::factory()->create();
+
+    $user->addFriend($friend);
+    $friend->acceptFriend($user);
+
+    $user->deleteFriend($friend);
+
+    expect($user->friends)->toHaveCount(0);
+    expect($friend->friends)->toHaveCount(0);
 });
