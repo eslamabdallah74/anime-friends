@@ -38,9 +38,18 @@
         {{-- Friends --}}
         <div>
             <h1 class="text-xl font-bold text-slate-600">My Friends</h1>
-            <div class="grid grid-cols-3 gap-4 mt-4">
+            <div class="mt-4">
                 @foreach ($ourFriends as $friend)
-                    <p>{{ $friend->name }}</p>
+                    <h4 class="text-gray-50">
+                        <span class="text-gray-900 font-semibold">{{ $friend->name }} </span>
+                        <span class="text-gray-700">({{ $friend->email }})</span>
+                        {{-- Delete --}}
+                        <form class="inline" action="/friends/{{ $friend->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="text-red-700 underline">Delete</button>
+                        </form>
+                    </h4>
                 @endforeach
             </div>
         </div>
@@ -49,9 +58,19 @@
         {{-- Pending friends --}}
         <div>
             <h1 class="text-xl font-bold text-slate-600">Pending Friends Requests</h1>
-            <div class="grid grid-cols-3 gap-4 mt-4">
+            <div class="mt-4">
                 @foreach ($pendingFriends as $friend)
-                    <p>{{ $friend->name }}</p>
+                    <h4 class="text-gray-50">
+                        <span class="text-gray-900 font-semibold">{{ $friend->name }} </span>
+                        <span class="text-gray-700">({{ $friend->email }})</span>
+                        {{-- Delete --}}
+                        <form class="inline" action="/friends/{{ $friend->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="text-red-700 underline">Delete</button>
+                        </form>
+                    </h4>
+
                 @endforeach
             </div>
         </div>
@@ -60,9 +79,24 @@
         {{-- Friends Requests --}}
         <div>
             <h1 class="text-xl font-bold text-slate-600">Friends Requests</h1>
-            <div class="grid grid-cols-3 gap-4 mt-4">
+            <div class="mt-4">
                 @foreach ($friendsRequests as $friend)
-                    <p>{{ $friend->name }}</p>
+                    <h4 class="text-gray-50">
+                        <span class="text-gray-900 font-semibold">{{ $friend->name }} </span>
+                        <span class="text-gray-700">({{ $friend->email }})</span>
+                    </h4>
+                    {{-- Accept --}}
+                    <form class="inline" action="/friends/{{ $friend->id }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button class="text-blue-700 underline">Accept</button>
+                    </form>
+                    {{-- Delete --}}
+                    <form class="inline" action="/friends/{{ $friend->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="text-red-700 underline">Decline</button>
+                    </form>
                 @endforeach
             </div>
         </div>

@@ -77,9 +77,12 @@ class FriendsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $friend,Request $request)
     {
-        //
+        $acceptFriend   = $request->user()->pendingFriendsOf()->updateExistingPivot($friend,[
+            'accepted'  => true
+        ]);
+        return back();
     }
 
     /**
@@ -88,8 +91,9 @@ class FriendsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $friend,Request $request)
     {
-        //
+        $deleteFriend = $request->user()->deleteFriend($friend);
+        return back();
     }
 }

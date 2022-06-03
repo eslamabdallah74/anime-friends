@@ -15,8 +15,13 @@
                 <ul>
                     {{-- Logged In --}}
                     <li>
-                        <span class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 "> {{ auth()->user()->name }} </span>
+                        {{-- Username Name --}}
+                        <span
+                         class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800">
+                          {{ auth()->user()->name }} </span>
                     </li>
+                </ul>
+                <ul>
                     <li>
                         <a href="" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Feed</a>
                     </li>
