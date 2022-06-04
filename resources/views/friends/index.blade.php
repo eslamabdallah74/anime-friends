@@ -35,7 +35,7 @@
         </form>
     </div>
     @if($ourFriends->count())
-        {{-- Friends --}}
+        {{-- My Friends --}}
         <div>
             <h1 class="text-xl font-bold text-slate-600">My Friends</h1>
             <div class="mt-4">
@@ -43,6 +43,7 @@
                     <h4 class="text-gray-50">
                         <span class="text-gray-900 font-semibold">{{ $friend->name }} </span>
                         <span class="text-gray-700">({{ $friend->email }})</span>
+                        {{-- Delete --}}
                         {{-- Delete --}}
                         <form class="inline" action="/friends/{{ $friend->id }}" method="POST">
                             @csrf
@@ -67,7 +68,7 @@
                         <form class="inline" action="/friends/{{ $friend->id }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="text-red-700 underline">Delete</button>
+                            <button class="text-red-700 underline">Cancel</button>
                         </form>
                     </h4>
 

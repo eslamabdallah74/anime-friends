@@ -91,7 +91,7 @@ class FriendsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $friend,Request $request)
+    public function destroy(Request $request,User $friend)
     {
         $deleteFriend = $request->user()->deleteFriend($friend);
         return back();

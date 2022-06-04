@@ -110,10 +110,13 @@ class User extends Authenticatable
             ->withPivot('accepted');
     }
 
-    // Delete a friend
+    // Delete a friend []
     public function deleteFriend(User $friend)
     {
-        return $this->FriendsOfMain()->detach($friend);
+        return [
+            $this->FriendsOfMain()->detach($friend),
+            $this->FriendsOf()->detach($friend)
+        ];
     }
 
 }
