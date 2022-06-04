@@ -20,7 +20,7 @@
             </div>
             <button
             type="submit"
-            class="w-full py-3 my-1 text-center text-gray-200 bg-green-700 rounded hover:bg-green-dark focus:outline-none"
+            class="w-full py-3 my-1 text-center text-gray-200 bg-blue-700 rounded hover:bg-green-dark focus:outline-none"
             >Add New Friend</button>
             {{-- Errors --}}
             @if ($errors->any())
@@ -41,7 +41,7 @@
             <div class="mt-4">
                 @foreach ($ourFriends as $friend)
                     <h4 class="text-gray-50">
-                        <span class="text-gray-900 font-semibold">{{ $friend->name }} </span>
+                        <span class="font-semibold text-gray-900">{{ $friend->name }} </span>
                         <span class="text-gray-700">({{ $friend->email }})</span>
                         {{-- Delete --}}
                         {{-- Delete --}}
@@ -62,7 +62,7 @@
             <div class="mt-4">
                 @foreach ($pendingFriends as $friend)
                     <h4 class="text-gray-50">
-                        <span class="text-gray-900 font-semibold">{{ $friend->name }} </span>
+                        <span class="font-semibold text-gray-900">{{ $friend->name }} </span>
                         <span class="text-gray-700">({{ $friend->email }})</span>
                         {{-- Delete --}}
                         <form class="inline" action="/friends/{{ $friend->id }}" method="POST">
@@ -83,7 +83,7 @@
             <div class="mt-4">
                 @foreach ($friendsRequests as $friend)
                     <h4 class="text-gray-50">
-                        <span class="text-gray-900 font-semibold">{{ $friend->name }} </span>
+                        <span class="font-semibold text-gray-900">{{ $friend->name }} </span>
                         <span class="text-gray-700">({{ $friend->email }})</span>
                     </h4>
                     {{-- Accept --}}
