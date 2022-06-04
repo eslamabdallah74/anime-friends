@@ -1,11 +1,11 @@
 <x-layouts.app>
     @guest
-    <x-slot name='header'>
-        Anime Friends
-    </x-slot>
-    <div class="mt-8">
-        Sign up to get started
-    </div>
+        <x-slot name='header'>
+            <h1 class="p-2 text-center bg-gray-900 rounded-md text-gray-50">Anime Friends</h1>
+        </x-slot>
+        <div class="mt-8">
+            <x-welcome-message></x-welcome-message>
+        </div>
     @endguest
     @auth
     <x-slot name='header'>

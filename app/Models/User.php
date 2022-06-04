@@ -9,10 +9,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
+
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use HasMergedRelationships;
 
     /**
      * The attributes that are mass assignable.
@@ -52,9 +55,10 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
-    public function getFriendsAttribute()
+    public function friends()
     {
-        return $this->acceptFriendsOfMain->merge($this->acceptFriendsOf);
+        // return $this->acceptFriendsOfMain->merge($this->acceptFriendsOf);
+        return $this->mergedRelationWithModel(User::class,'friends_view');
     }
 
     public function addFriend(User $friend)

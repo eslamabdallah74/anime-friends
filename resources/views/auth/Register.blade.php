@@ -10,7 +10,7 @@
                     required
                     type="text"
                     class="block w-full p-3 mb-4 border rounded border-grey-light"
-                    placeholder="Jon Doe"
+                    placeholder="Name"
                     name="name"
                     placeholder="Full Name" />
 
@@ -18,7 +18,7 @@
                     required
                     type="text"
                     class="block w-full p-3 mb-4 border rounded border-grey-light"
-                    placeholder="Jon-Doe@gmail.com"
+                    placeholder="Email"
                     name="email"
                     placeholder="Email" />
 
@@ -38,7 +38,7 @@
 
                 <button
                     type="submit"
-                    class="w-full py-3 my-1 text-center text-gray-200 bg-green-700 rounded hover:bg-green-dark focus:outline-none"
+                    class="w-full py-3 my-1 text-center text-gray-200 bg-blue-700 rounded hover:bg-green-dark focus:outline-none"
                 >Create Account</button>
 
             </div>

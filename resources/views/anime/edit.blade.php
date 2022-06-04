@@ -45,7 +45,7 @@
 
                 <button
                     type="submit"
-                    class="w-full py-3 my-1 text-center text-gray-200 bg-green-700 rounded hover:bg-green-dark focus:outline-none"
+                    class="w-full py-3 my-1 text-center text-gray-200 bg-blue-700 rounded hover:bg-green-dark focus:outline-none"
                 >Edit Anime</button>
 
             </div>
