@@ -8,9 +8,7 @@ class HomePageController extends Controller
 {
     public function __invoke(Request $request)
     {
-        // dd($request->user()?->animes->groupBy('pivot.status'));
-        return view('home',[
-            'animesByStatus' => $request->user()?->animes->groupBy('pivot.status'),
-        ]);
+        $animesByStatus = auth()->check() ? $request->user()->animes->groupBy('pivot.status') : 0;
+        return view('home',compact('animesByStatus'));
     }
 }
