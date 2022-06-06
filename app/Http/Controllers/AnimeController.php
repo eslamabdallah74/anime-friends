@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnimeStoreRequest;
 use App\Models\Anime;
 use App\Models\Pivot\AnimeUser;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -97,8 +98,9 @@ class AnimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Anime $anime)
     {
-        //
+        $anime->delete();
+        return redirect()->route('Home')->with('deleted','Anime has been deleted successfully!');
     }
 }
