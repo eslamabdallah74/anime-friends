@@ -10,12 +10,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasMergedRelationships;
+    use HasRelationships;
 
     /**
      * The attributes that are mass assignable.
@@ -46,6 +48,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 
     public function animes()
     {
@@ -123,4 +127,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function animesOfFriends()
+    {
+        return $this->hasManyDeepFromRelations($this->friends(), (new User())->animes())
+        ->withIntermediate(AnimeUser::class)
+        ->orderBy('__anime_user__updated_at','desc');
+    }
 }

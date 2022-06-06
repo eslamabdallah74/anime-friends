@@ -13,4 +13,12 @@ class AnimeUser extends Pivot
         'WATCHED'       => 'Watched',
     ];
 
+    public function getActionAttribute()
+    {
+        return match($this->status) {
+            'WANT_TO_WATCH' => 'Wants to watch',
+            'WATCHING'      => 'Is watching',
+            'WATCHED'       => 'Has finished',
+        };
+    }
 }

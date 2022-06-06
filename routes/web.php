@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\FriendsController;
 
 /*
@@ -26,5 +27,6 @@ Route::middleware(['auth'])->group(function () {
     // Anime
     Route::resource('/anime',AnimeController::class);
     Route::resource('/friends',FriendsController::class);
+    Route::get('/feed', FeedController::class);
 });
 

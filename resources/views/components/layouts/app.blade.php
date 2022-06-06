@@ -23,7 +23,7 @@
                 </ul>
                 <ul>
                     <li>
-                        <a href="" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Feed</a>
+                        <a href="/feed" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Feed</a>
                     </li>
                 </ul>
                 {{-- Another list --}}

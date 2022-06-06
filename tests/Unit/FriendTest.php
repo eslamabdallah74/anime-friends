@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Anime;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
@@ -72,4 +73,37 @@ it('can remove a friend', function () {
 
     expect($user->friends)->toHaveCount(0);
     expect($friend->friends)->toHaveCount(0);
+});
+
+it('can get animes of friends', function () {
+
+    $user               = User::factory()->create();
+    $friendOne          = User::factory()->create();
+    $friendTwo          = User::factory()->create();
+    $friendThree        = User::factory()->create();
+
+    $friendOne->animes()->attach($anime = Anime::factory()->create(),[
+        'status'        => 'WANT_TO_WATCH',
+        'updated_at'    => now(),
+    ]);
+    $friendTwo->animes()->attach($animeTwo  = Anime::factory()->create(),[
+        'status'        => 'WANT_TO_WATCH',
+        'updated_at'    => now()->addDay(),
+    ]);
+    $friendThree->animes()->attach($animeThree  = Anime::factory()->create(),[
+        'status'    => 'WANT_TO_WATCH'
+    ]);
+
+    $user->addFriend($friendOne);
+    $friendOne->acceptFriend($user);
+
+    $friendTwo->addFriend($user);
+    $user->acceptFriend($friendTwo);
+
+    $user->addFriend($friendThree);
+
+    expect($user->animesOfFriends)
+        ->count()->toBe(2)
+        ->first()->name->toBe($animeTwo->name);
+
 });

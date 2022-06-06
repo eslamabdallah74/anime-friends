@@ -529,6 +529,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .list-decimal {
   list-style-type: decimal;
 }
+.list-disc {
+  list-style-type: disc;
+}
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
