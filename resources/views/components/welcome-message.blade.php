@@ -2,8 +2,8 @@
     <h3 class="text-xl">Welcome To Anime Friends</h3>
     <h4 class="mt-4 mb-2">Place where you can</h4>
     <ul class="mb-2 list-disc">
-        <li class="">You Can store your favorite/want to watch animes  so you can watch them later</li>
-        <li class="">You can also Add friends and see what they're watching</li>
+        <li class="">Store your favorite/want to watch animes  so you can watch them later</li>
+        <li class="">Also Add friends and see what they're watching</li>
     </ul>
     <div class="flex">
             {{-- Image --}}
