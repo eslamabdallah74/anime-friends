@@ -12,6 +12,11 @@
     <div class="grid grid-cols-8 gap-6 px-6 mx-auto mt-16 max-w-7xl">
        <div class="col-span-2 space-y-6 border-r border-slate-200">
            @auth
+            @php
+                $friendsRequests = auth()->user()->pendingFriendsOf->count();
+                $myFriends       = auth()->user()->acceptFriendsOf->count() + auth()->user()->acceptFriendsOfMain->count();
+
+            @endphp
                 <ul>
                     {{-- Logged In --}}
                     <li>
@@ -35,7 +40,14 @@
                         <a href="{{ route('anime.create') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Add Anime</a>
                     </li>
                     <li>
-                        <a href="{{ route('friends.index') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">Friends</a>
+                        <a href="{{ route('friends.index') }}" class="block py-1 text-lg font-bold text-slate-600 hover:text-slate-800 ">
+                            <span> {{ $myFriends }} </span>
+                            Friends
+                            {{-- Friends requests --}}
+                            @if($friendsRequests)
+                                <span class="px-4 py-2 text-gray-100 bg-blue-700 rounded-xl"> {{ $friendsRequests }} </span>
+                            @endif
+                        </a>
                     </li>
                 </ul>
                 {{-- Another list --}}
